@@ -34,10 +34,15 @@ int main(int argc, char *argv[]) {
 		QSORT(agent, csbuf + i * (K + 1) + 1, csbuf[i * (K + 1)], LTDR);
 
 	meter *sp = createsp(seed);
+	penny tot = 0;
 
-	for (agent i = 0; i < nc; i++)
-		printc(csbuf + i * (K + 1), COALVALUE(csbuf + i * (K + 1), GET(dr, csbuf[i * (K + 1) + 1]), sp));
+	for (agent i = 0; i < nc; i++) {
+		const penny val = COALVALUE(csbuf + i * (K + 1), GET(dr, csbuf[i * (K + 1) + 1]), sp);
+		printc(csbuf + i * (K + 1), val);
+		tot += val;
+	}
 
+	printf("Solution = %.2f£\n", 0.01 * tot);
 	free(csbuf);
 	free(sp);
 
