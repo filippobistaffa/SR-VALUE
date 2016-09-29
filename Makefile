@@ -1,7 +1,7 @@
 .PHONY: all
 
 ifndef OUT
-OUT=./pc
+OUT=./csvalue
 endif
 
 CMP=g++
@@ -9,10 +9,6 @@ WARN=-Wall -Wno-unused-result -Wno-deprecated-declarations -Wno-sign-compare -Wn
 OPTIM=-Ofast -march=native -funroll-loops -funsafe-loop-optimizations -falign-functions=16 -falign-loops=16 -fopenmp
 NOOPTIM=-O0 -march=native -fopenmp
 DBG=-g ${NOOPTIM}
-
-INC=-DIL_STD -I/opt/ibm/ILOG/CPLEX_Studio1263/cplex/include -I/opt/ibm/ILOG/CPLEX_Studio1263/concert/include
-LDIR=-L/opt/ibm/ILOG/CPLEX_Studio1263/concert/lib/x86-64_linux/static_pic -L/opt/ibm/ILOG/CPLEX_Studio1263/cplex/lib/x86-64_linux/static_pic
-LINK=-lconcert -lilocplex -lcplex
 
 COBJSUBDIR=cobj
 DEPSUBDIR=dep
@@ -41,17 +37,14 @@ exit $$ret ;\
 fi
 endef
 
-all: pc
+all: csvalue
 	@true
 
 -include ${DEPSUBDIR}/*.d
 
-pc: ${COBJSUBDIR}/pc.o ${COBJSUBDIR}/io.o ${COBJSUBDIR}/sp.o ${COBJSUBDIR}/value.o ${COBJSUBDIR}/slyce.o
-	@${ECHOLD} pc
+csvalue: ${COBJSUBDIR}/csvalue.o ${COBJSUBDIR}/io.o ${COBJSUBDIR}/sp.o ${COBJSUBDIR}/value.o
+	@${ECHOLD} csvalue
 	@${CMP} ${OPT} ${LDIR} $^ ${LINK} -o ${OUT}
-
-${COBJSUBDIR}/slyce.o: slyce.cpp
-	@$(compilec)
 
 ${COBJSUBDIR}/value.o: value.cpp
 	@$(compilec)
@@ -62,7 +55,7 @@ ${COBJSUBDIR}/io.o: io.cpp
 ${COBJSUBDIR}/sp.o: sp.cpp
 	@$(compilec)
 
-${COBJSUBDIR}/pc.o: pc.cpp
+${COBJSUBDIR}/csvalue.o: csvalue.cpp
 	@$(compilec)
 
 clean:
@@ -70,4 +63,4 @@ clean:
 	@rm -rf ${COBJSUBDIR} ${DEPSUBDIR}
 
 run:
-	./pc.sh test.sol
+	./csvalue.sh test.sol

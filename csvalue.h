@@ -1,7 +1,6 @@
-#ifndef PK_H_
-#define PK_H_
+#ifndef CSVALUE_H_
+#define CSVALUE_H_
 
-#include <omp.h>
 #include <stdio.h>
 #include <float.h>
 #include <stdlib.h>
@@ -9,9 +8,6 @@
 #include <limits.h>
 #include <sys/time.h>
 #include <immintrin.h>
-
-// Cplex headers
-#include <ilcplex/ilocplex.h>
 
 #include "instance.h"
 #include "params.h"
@@ -23,9 +19,8 @@
 using namespace std;
 
 #include "iqsort.h"
-#include "slyce.h"
 #include "value.h"
 #include "io.h"
 #include "sp.h"
 
-#endif /* PK_H_ */
+#endif /* CSVALUE_H_ */

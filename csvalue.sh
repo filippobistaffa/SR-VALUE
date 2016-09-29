@@ -38,5 +38,5 @@ fi
 make -j
 if [[ $? == 0 ]]
 then
-	./pc
+	./csvalue
 fi

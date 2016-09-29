@@ -1,8 +1,7 @@
 instance.h
 cobj
 dep
-pc
-pk
+csvalue
 
 *sol
 *log

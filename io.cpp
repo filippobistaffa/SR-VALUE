@@ -1,22 +1,6 @@
-#include "pc.h"
+#include "csvalue.h"
 
 static char line[MAXLINE];
-
-// Reads the graph's adjacency lists
-
-edge readadj(agent *adj, FILE *f) {
-
-	edge ret = 0;
-
-	for (agent i = 0; i < N; i++) {
-		fgets(line, MAXLINE, f);
-		ret += (adj[i * N] = atoi(strtok(line, " ")));
-		for (agent j = 0; j < adj[i * N]; j++)
-			adj[i * N + j + 1] = atoi(strtok(NULL, " "));
-	}
-
-	return ret / 2;
-}
 
 // Reads the solution coalition structure
 
