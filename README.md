@@ -1,4 +1,4 @@
-CSVALUE: compute the value of a Social Ridesharing coalition structure
+CSVALUE: compute the SR value of a coalition structure
 ===================
 
 Execution
