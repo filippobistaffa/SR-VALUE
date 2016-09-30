@@ -25,7 +25,6 @@ The solution coalition structure is `{{9},{6},{2},{7,0,1,3,8},{4},{5}}`, where `
 ```
 10
 5
-47
 9
 6
 2
