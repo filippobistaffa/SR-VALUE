@@ -6,7 +6,6 @@ re='^[0-9]+$'				# Regular expression to detect natural numbers
 
 usage() { echo -e "Usage: $0 -i <filename> -s <seed>\n-i\tInput filename\n-s\tSeed" 1>&2; exit 1; }
 
-
 while getopts ":i:s:" o; do
 	case "${o}" in
 	i)
