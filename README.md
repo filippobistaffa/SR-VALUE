@@ -1,11 +1,11 @@
-CSVALUE: compute the SR value of a coalition structure
+SRVALUE: compute the SR value of a coalition structure
 ===================
 
 Execution
 ----------
-CSVALUE must be executed by means of the [`csvalue.sh`](csvalue.sh) script, i.e.,
+SRVALUE must be executed by means of the [`srvalue.sh`](srvalue.sh) script, i.e.,
 ```
-./csvalue.sh -i <filename> -s <seed>
+./srvalue.sh -i <filename> -s <seed>
 
 -i	Input filename
 -s	Seed
@@ -35,4 +35,4 @@ The solution coalition structure is `{{9},{6},{2},{7,0,1,3,8},{4},{5}}`, where `
 
 Acknowledgements
 ----------
-CSVALUE employs the [GeoLife dataset by Microsoft Research](http://research.microsoft.com/en-us/projects/geolife) presented by Yu Zheng, Quannan Li, Yukun Chen, Xing Xie, and Wei-Ying Ma in “[Understanding mobility based on GPS data](https://www.microsoft.com/en-us/research/publication/understanding-mobility-based-on-gps-data)”, Proceedings of the 10th ACM conference on Ubiquitous Computing (Ubicomp), pages 312−321, 2008, ACM press.
+SRVALUE employs the [GeoLife dataset by Microsoft Research](http://research.microsoft.com/en-us/projects/geolife) presented by Yu Zheng, Quannan Li, Yukun Chen, Xing Xie, and Wei-Ying Ma in “[Understanding mobility based on GPS data](https://www.microsoft.com/en-us/research/publication/understanding-mobility-based-on-gps-data)”, Proceedings of the 10th ACM conference on Ubiquitous Computing (Ubicomp), pages 312−321, 2008, ACM press.

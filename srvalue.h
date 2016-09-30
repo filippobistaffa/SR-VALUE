@@ -1,5 +1,5 @@
-#ifndef CSVALUE_H_
-#define CSVALUE_H_
+#ifndef SRVALUE_H_
+#define SRVALUE_H_
 
 #include <stdio.h>
 #include <float.h>
@@ -23,4 +23,4 @@ using namespace std;
 #include "io.h"
 #include "sp.h"
 
-#endif /* CSVALUE_H_ */
+#endif /* SRVALUE_H_ */

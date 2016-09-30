@@ -1,7 +1,7 @@
 .PHONY: all
 
 ifndef OUT
-OUT=./csvalue
+OUT=./srvalue
 endif
 
 CMP=g++
@@ -37,13 +37,13 @@ exit $$ret ;\
 fi
 endef
 
-all: csvalue
+all: srvalue
 	@true
 
 -include ${DEPSUBDIR}/*.d
 
-csvalue: ${COBJSUBDIR}/csvalue.o ${COBJSUBDIR}/io.o ${COBJSUBDIR}/sp.o ${COBJSUBDIR}/value.o
-	@${ECHOLD} csvalue
+srvalue: ${COBJSUBDIR}/srvalue.o ${COBJSUBDIR}/io.o ${COBJSUBDIR}/sp.o ${COBJSUBDIR}/value.o
+	@${ECHOLD} srvalue
 	@${CMP} ${OPT} ${LDIR} $^ ${LINK} -o ${OUT}
 
 ${COBJSUBDIR}/value.o: value.cpp
@@ -55,7 +55,7 @@ ${COBJSUBDIR}/io.o: io.cpp
 ${COBJSUBDIR}/sp.o: sp.cpp
 	@$(compilec)
 
-${COBJSUBDIR}/csvalue.o: csvalue.cpp
+${COBJSUBDIR}/srvalue.o: srvalue.cpp
 	@$(compilec)
 
 clean:
@@ -63,4 +63,4 @@ clean:
 	@rm -rf ${COBJSUBDIR} ${DEPSUBDIR}
 
 run:
-	./csvalue.sh test.sol
+	./srvalue.sh test.sol

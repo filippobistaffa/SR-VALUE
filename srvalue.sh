@@ -64,5 +64,7 @@ fi
 make -j
 if [[ $? == 0 ]]
 then
-	./csvalue $s
+	bin=$0
+	bin=${bin%???}
+	$bin $s
 fi
