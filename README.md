@@ -3,21 +3,23 @@ CSVALUE: compute the SR value of a coalition structure
 
 Execution
 ----------
-PC must be executed by means of the [`csvalue.sh`](csvalue.sh) script, i.e.,
+CSVALUE must be executed by means of the [`csvalue.sh`](csvalue.sh) script, i.e.,
 ```
-./csvalue.sh INPUTFILE
+./csvalue.sh -i <filename> -s <seed>
+
+-i	Input filename
+-s	Seed
 ```
 
 Input File Format
 ----------
-`INPUTFILE` is the path of the input file, which must be structured according to the following format.
+The input file must be structured according to the following format.
 
   * `N` (i.e., the number of agents) in the first line.
   * `K` (i.e., the maximum coalition cardinality) in the second line.
-  * `SEED` (i.e., the seed used to generate the pseudo-random SR instance) in the third line.
   * `M` lines representing the `M` coalitions in the solution coalition structure. Each line must contain the coalition's members. Drivers must be marked by preceding their indices with `*` (e.g., `*0` means that `0` is a driver).
 
-The following example file represents a solution of the instance with `N` = 10, `SEED` = 47, and `K` = 5.
+The following example file represents a solution of the instance with `N` = 10, seed = 47, and `K` = 5.
 The solution coalition structure is `{{9},{6},{2},{7,0,1,3,8},{4},{5}}`, where `7` is a driver. 
 
 ```

@@ -24,9 +24,7 @@ int main(int argc, char *argv[]) {
 	// Skip first 2 lines (N, K)
 	fgets(line, MAXLINE, f);
 	fgets(line, MAXLINE, f);
-	// Read seed
-	fgets(line, MAXLINE, f);
-	unsigned seed = atoi(line);
+	unsigned seed = atoi(argv[1]);
 	agent nc = readcs(csbuf, dr, f);
 	fclose(f);
 
