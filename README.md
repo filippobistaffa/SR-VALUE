@@ -1,4 +1,4 @@
-SRVALUE: compute the SR value of a coalition structure
+SR-VALUE: compute the SR value of a coalition structure
 ===================
 
 SR-VALUE computes the value of a coalition structure in the SR scenario. 
