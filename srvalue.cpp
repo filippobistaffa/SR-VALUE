@@ -10,7 +10,7 @@ void printc(const agent *c, penny v) {
 	agent n = *c;
 	printf("[ ");
 	while (n--) printf("%u ", *(++c));
-	printf("] = %.2f£\n", 0.01 * v);
+	printf("] = %.2f\n", 0.01 * v);
 }
 
 int main(int argc, char *argv[]) {
@@ -36,11 +36,17 @@ int main(int argc, char *argv[]) {
 
 	for (agent i = 0; i < nc; i++) {
 		const penny val = COALVALUE(csbuf + i * (K + 1), GET(dr, csbuf[i * (K + 1) + 1]), sp);
+		#ifndef CSV
 		printc(csbuf + i * (K + 1), val);
+		#endif
 		tot += val;
 	}
 
-	printf("Solution = %.2f£\n", 0.01 * tot);
+	#ifdef CSV
+	printf("%.2f\n", 0.01 * tot);
+	#else
+	printf("Solution = %.2f\n", 0.01 * tot);
+	#endif
 	free(csbuf);
 	free(sp);
 

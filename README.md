@@ -7,10 +7,11 @@ Execution
 ----------
 SR-VALUE must be executed by means of the [`srvalue.sh`](srvalue.sh) script, i.e.,
 ```
-./srvalue.sh -i <filename> -s <seed>
+./srvalue.sh -i <filename> -s <seed> [-c]
 
 -i	Input filename
 -s	Seed
+-c	Enable CSV output
 ```
 
 Input File Format

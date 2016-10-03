@@ -4,9 +4,9 @@ red='\033[0;31m'			# Red
 nc='\033[0m'				# No color
 re='^[0-9]+$'				# Regular expression to detect natural numbers
 
-usage() { echo -e "Usage: $0 -i <filename> -s <seed>\n-i\tInput filename\n-s\tSeed" 1>&2; exit 1; }
+usage() { echo -e "Usage: $0 -i <filename> -s <seed> [-c]\n-i\tInput filename\n-s\tSeed\n-c\tEnable CSV output" 1>&2; exit 1; }
 
-while getopts ":i:s:" o; do
+while getopts ":i:s:c" o; do
 	case "${o}" in
 	i)
 		i=${OPTARG}
@@ -22,6 +22,9 @@ while getopts ":i:s:" o; do
 			echo -e "${red}Seed must be a number!${nc}\n"
 			usage
 		fi
+		;;
+	c)
+		c=1
 		;;
 	\?)
 		echo -e "${red}-$OPTARG is not a valid option!${nc}\n"
@@ -44,6 +47,11 @@ tmp=`mktemp`
 echo "#define N $N" > $tmp
 echo "#define K $K" >> $tmp
 echo "#define INPUTFILE \"$i\"" >> $tmp
+
+if [ ! -z "${c}" ]
+then
+	echo "#define CSV" >> $tmp
+fi
 
 if [ ! -f instance.h ]
 then
