@@ -10,7 +10,6 @@
 #include <immintrin.h>
 
 #include "instance.h"
-#include "params.h"
 #include "macros.h"
 #include "types.h"
 
