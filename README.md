@@ -1,6 +1,8 @@
 SRVALUE: compute the SR value of a coalition structure
 ===================
 
+SR-VALUE computes the value of a coalition structure in the SR scenario. 
+
 Execution
 ----------
 SRVALUE must be executed by means of the [`srvalue.sh`](srvalue.sh) script, i.e.,
@@ -17,7 +19,7 @@ The input file must be structured according to the following format.
 
   * `N` (i.e., the number of agents) in the first line.
   * `K` (i.e., the maximum coalition cardinality) in the second line.
-  * `M` lines representing the `M` coalitions in the solution coalition structure. Each line must contain the coalition's members. Drivers must be marked by preceding their indices with `*` (e.g., `*0` means that `0` is a driver).
+  * `M` lines representing the `M` coalitions in the solution coalition structure. Each line must contain the coalition's members. Drivers must be marked by preceding their indices with `*` (e.g., `*0` means that `0` is a driver). At the moment, SR-VALUE supports only coalitions with one driver.
 
 The following example file represents a solution of the instance with `N` = 10, seed = 47, and `K` = 5.
 The solution coalition structure is `{{9},{6},{2},{7,0,1,3,8},{4},{5}}`, where `7` is a driver. 
