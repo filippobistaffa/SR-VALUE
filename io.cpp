@@ -1,12 +1,17 @@
 #include "srvalue.h"
 
+#define MAXLINE 1000
 static char line[MAXLINE];
 
 // Reads the solution coalition structure
 
-agent readcs(agent *csbuf, chunk *dr, FILE *f) {
+agent readcs(const char *filename, agent *csbuf, chunk *dr) {
 
 	agent ret = 0;
+	FILE *f = fopen(filename, "r");
+	// Skip first 2 lines (N, K)
+	fgets(line, MAXLINE, f);
+	fgets(line, MAXLINE, f);
 
 	while (fgets(line, MAXLINE, f) != NULL) {
 		*csbuf = 0;
@@ -23,5 +28,6 @@ agent readcs(agent *csbuf, chunk *dr, FILE *f) {
 		ret++;
 	}
 
+	fclose(f);
 	return ret;
 }

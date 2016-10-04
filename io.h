@@ -1,8 +1,6 @@
 #ifndef IO_H_
 #define IO_H_
 
-#define MAXLINE 1000
-
 // Prints the content given buffer
 
 #include <iostream>
@@ -18,6 +16,6 @@ void printbuf(const type *buf, unsigned n, const char *name = NULL) {
 
 // Reads the solution coalition structure
 
-agent readcs(agent *csbuf, chunk *dr, FILE *f);
+agent readcs(const char *filename, agent *csbuf, chunk *dr);
 
 #endif /* IO_H_ */

@@ -46,7 +46,6 @@ K=`sed '2q;d' $i`	# Maximum cardinality
 tmp=`mktemp`
 echo "#define N $N" > $tmp
 echo "#define K $K" >> $tmp
-echo "#define INPUTFILE \"$i\"" >> $tmp
 
 if [ ! -z "${c}" ]
 then
@@ -73,5 +72,5 @@ if [[ $? == 0 ]]
 then
 	bin=$0
 	bin=${bin%???}
-	$bin $s
+	$bin $i $s
 fi
