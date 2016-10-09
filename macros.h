@@ -6,11 +6,16 @@
 
 #define LT(X, Y) (*(X) < *(Y))
 #define LE(X, Y) (*(X) <= *(Y))
+#define LTL(X, Y) (GET(l, *(X)) == GET(l, *(Y)) ? (*(X)) < (*(Y)) : GET(l, *(X)) > GET(l, *(Y)))
+#define LEL(X, Y) (GET(l, *(X)) == GET(l, *(Y)) ? (*(X)) <= (*(Y)) : GET(l, *(X)) > GET(l, *(Y)))
 #define GT(X, Y) (*(X) > *(Y))
 #define GE(X, Y) (*(X) >= *(Y))
 
 #define X(V, I) ((V)[2 * (I)])
 #define Y(V, I) ((V)[2 * (I) + 1])
+
+#define ROUND(TYPE, I) ((TYPE)(I))
+#define DIST(DX, DY) (sqrt((DX) * (DX) + (DY) * (DY)))
 
 #define DIVBPC(X) ((X) / BITSPERCHUNK)
 #define MODBPC(X) ((X) % BITSPERCHUNK)
@@ -47,5 +52,22 @@
 
 #define ONES(V, I, C) do { const unsigned _mi = MODBPC(I); for (unsigned _i = 0; _i < (C); _i++) (V)[_i] = ~ZERO; \
 			   if (_mi) (V)[(C) - 1] = (ONE << _mi) - 1; } while (0)
+
+// Prints the content given buffer
+
+#include <stdio.h>
+#include <iostream>
+template <typename type>
+__attribute__((always_inline)) inline
+void printbuf(const type *buf, unsigned n, const char *name = NULL, const char *format = NULL, const char *after = NULL) {
+
+	if (name) printf("%s = [ ", name);
+	else printf("[ ");
+	while (n--) {
+		if (format) { printf(format, *(buf++)); printf(" "); }
+		else std::cout << *(buf++) << " ";
+	}
+	printf("]%s", (after) ? after : "\n");
+}
 
 #endif  /* MACROS_H_ */

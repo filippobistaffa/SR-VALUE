@@ -1,42 +1,32 @@
 #include "srvalue.h"
 
-#define LTDR(X, Y) (GET(dr, *(X)) == GET(dr, *(Y)) ? (*(X)) < (*(Y)) : GET(dr, *(X)) > GET(dr, *(Y)))
-
-__attribute__((always_inline)) inline
-void printc(const agent *c, penny v) {
-
-	agent n = *c;
-	printf("[ ");
-	while (n--) printf("%u ", *(++c));
-	printf("] = %.2f\n", 0.01 * v);
-}
-
 int main(int argc, char *argv[]) {
 
 	agent *csbuf = (agent *)malloc(sizeof(agent) * (K + 1) * N);
-	chunk dr[C] = {0};
+	chunk l[C] = {0};
 
-	agent nc = readcs(argv[1], csbuf, dr);
+	agent nc = readcs(argv[1], csbuf, l);
 	unsigned seed = atoi(argv[2]);
 
 	for (agent i = 0; i < nc; i++)
-		QSORT(agent, csbuf + i * (K + 1) + 1, csbuf[i * (K + 1)], LTDR);
+		QSORT(agent, csbuf + i * (K + 1) + 1, csbuf[i * (K + 1)], LTL);
 
 	meter *sp = createsp(seed);
-	penny tot = 0;
+	value tot = 0;
 
 	for (agent i = 0; i < nc; i++) {
-		const penny val = COALVALUE(csbuf + i * (K + 1), GET(dr, csbuf[i * (K + 1) + 1]), sp);
+		const value val = srvalue(csbuf + i * (K + 1), l, sp);
 		#ifndef CSV
-		printc(csbuf + i * (K + 1), val);
+		printbuf(csbuf + i * (K + 1) + 1, csbuf[i * (K + 1)], NULL, NULL, " = ");
+		printf("%.2f\n", val);
 		#endif
 		tot += val;
 	}
 
 	#ifdef CSV
-	printf("%.2f\n", 0.01 * tot);
+	printf("%.2f\n", tot);
 	#else
-	printf("Solution = %.2f\n", 0.01 * tot);
+	printf("Solution = %.2f\n", tot);
 	#endif
 	free(csbuf);
 	free(sp);

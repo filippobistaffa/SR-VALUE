@@ -1,7 +1,9 @@
-#include "srvalue.h"
+#include "sp.h"
 
 // Shuffle the content of an array
 
+#include <string.h>
+__attribute__((always_inline)) inline
 void shuffle(void *array, size_t n, size_t size) {
 
 	uint8_t tmp[size];

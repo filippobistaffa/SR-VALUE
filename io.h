@@ -1,18 +1,15 @@
 #ifndef IO_H_
 #define IO_H_
 
-// Prints the content given buffer
+// Headers
 
-#include <iostream>
-template <typename type>
-__attribute__((always_inline)) inline
-void printbuf(const type *buf, unsigned n, const char *name = NULL) {
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
 
-	if (name) printf("%s = [ ", name);
-	else printf("[ ");
-	while (n--) cout << *(buf++) << " ";
-	printf("]\n");
-}
+#include "instance.h"
+#include "macros.h"
+#include "types.h"
 
 // Reads the solution coalition structure
 
