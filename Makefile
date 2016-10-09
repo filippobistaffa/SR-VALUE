@@ -61,6 +61,3 @@ ${COBJSUBDIR}/srvalue.o: srvalue.cpp
 clean:
 	@echo "Removing subdirectories..."
 	@rm -rf ${COBJSUBDIR} ${DEPSUBDIR}
-
-run:
-	./srvalue.sh test.sol
