@@ -12,14 +12,14 @@ while getopts ":i:s:c" o; do
 		i=${OPTARG}
 		if [ ! -f "$i" ]
 		then
-			echo -e "${red}Input file \"$i\" not found!${nc}\n"
+			echo -e "${red}Input file \"$i\" not found!${nc}\n" 1>&2
 			usage
 		fi
 		;;
 	s)
 		s=${OPTARG}
 		if ! [[ $s =~ $re ]] ; then
-			echo -e "${red}Seed must be a number!${nc}\n"
+			echo -e "${red}Seed must be a number!${nc}\n" 1>&2
 			usage
 		fi
 		;;
@@ -27,7 +27,7 @@ while getopts ":i:s:c" o; do
 		c=1
 		;;
 	\?)
-		echo -e "${red}-$OPTARG is not a valid option!${nc}\n"
+		echo -e "${red}-$OPTARG is not a valid option!${nc}\n" 1>&2
 		usage
 		;;
 	esac
@@ -36,7 +36,7 @@ shift $((OPTIND-1))
 
 if [ -z "${i}" ] || [ -z "${s}" ]
 then
-	echo -e "${red}Missing one or more required options!${nc}\n"
+	echo -e "${red}Missing one or more required options!${nc}\n" 1>&2
 	usage
 fi
 
