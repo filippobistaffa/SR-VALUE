@@ -4,9 +4,9 @@ red='\033[0;31m'			# Red
 nc='\033[0m'				# No color
 re='^[0-9]+$'				# Regular expression to detect natural numbers
 
-usage() { echo -e "Usage: $0 -i <filename> -s <seed> [-c]\n-i\tInput filename\n-s\tSeed\n-c\tEnable CSV output" 1>&2; exit 1; }
+usage() { echo -e "Usage: $0 -i <filename> -s <seed> [-c] [-w filename]\n-i\tInput filename\n-s\tSeed\n-c\tEnable CSV output\n-w\tWrite value to file" 1>&2; exit 1; }
 
-while getopts ":i:s:c" o; do
+while getopts ":i:s:w:c" o; do
 	case "${o}" in
 	i)
 		i=${OPTARG}
@@ -25,6 +25,18 @@ while getopts ":i:s:c" o; do
 		;;
 	c)
 		c=1
+		;;
+	w)
+		w=${OPTARG}
+		touch $w 2> /dev/null
+		rc=$?
+		if [[ $rc != 0 ]]
+		then
+			echo -e "${red}Unable to create $w${nc}" 1>&2
+			exit
+		else
+			rm $w
+		fi
 		;;
 	\?)
 		echo -e "${red}-$OPTARG is not a valid option!${nc}\n" 1>&2
@@ -72,5 +84,5 @@ if [[ $? == 0 ]]
 then
 	bin=$0
 	bin=${bin%???}
-	$bin $i $s
+	$bin $i $s $w
 fi

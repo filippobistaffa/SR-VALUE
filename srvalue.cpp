@@ -40,6 +40,13 @@ int main(int argc, char *argv[]) {
 	#else
 	printf("Solution = %.2f\n", tot);
 	#endif
+
+	if (argc == 4) {
+		FILE *output = fopen(argv[3], "w+");
+		fprintf(output, "%.2f\n", tot);
+		fclose(output);
+	}
+
 	free(csbuf);
 	free(sp);
 
